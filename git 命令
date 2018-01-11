@@ -1,0 +1,32 @@
+git branch 查看本地所有分支
+git branch <file> 创建分支
+/**************************************************/
+git checkout <file> 切换分支
+git checkout -b <file> 创建并切换分支
+git checkout -d <file> 删除分支
+git checkout --<file> 将在工作区的修改全部撤销
+/**************************************************/
+git reset HEAD <file> 把暂存区的修改回退到工作区(HEAD表示最新的版本)
+git reset --hard HEAD 回退到最新版本,等于删除工作区和暂存区的内容
+git reset --hard HEAD^ 回退到上一次commit
+git reset --hard e348162 回退到指定commit id版本(id可以不写完整)
+注：HEAD最新版本, HEAD^ HEAD~1上一版本. 以此类推.
+   --soft: 缓存区和工作目录都不会被改变
+   --mixed: 默认选项。缓存区和你指定的提交同步，但工作目录不受影响
+   --hard: 缓存区和工作目录都同步到你指定的提交
+/**************************************************/
+git revert HEAD~2同git reset --hard HEAD~2 区别在于前者通过提交新的commit回到指定版本,后者为指针直接回退
+/**************************************************/
+git merge <name> 合并分支
+/**************************************************/
+git stash 缓存工作区
+git stash list 查看缓存列表
+git stash apply 取出最近一次缓存
+git stash apply stash@{n} 取出指定缓存
+git stash apply --index
+git stash drop 删除最近一次缓存
+git stash drop stash@{n} 删除指定缓存
+git stash pop 取出最近一次缓存并在缓存列表中删除该缓存
+git stash show -p stash@{0} | git apply -R
+git stash show -p | git apply -R
+/**************************************************/
