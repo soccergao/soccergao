@@ -1,10 +1,15 @@
 git branch 查看本地所有分支
 git branch <file> 创建分支
 /**************************************************/
+git commit --amend 改写单次commit
+/**************************************************/
+git push -f <remote> <branch> 强制push，覆盖原有远程仓库
+/**************************************************/
 git checkout <file> 切换分支
 git checkout -b <file> 创建并切换分支
 git checkout -d <file> 删除分支
 git checkout --<file> 将在工作区的修改全部撤销
+git checkout <commit> -- <file>获取历史版本的某个文件
 /**************************************************/
 git reset HEAD <file> 把暂存区的修改回退到工作区(HEAD表示最新的版本)
 git reset --hard HEAD 回退到最新版本,等于删除工作区和暂存区的内容
@@ -15,7 +20,7 @@ git reset --hard e348162 回退到指定commit id版本(id可以不写完整)
    --mixed: 默认选项。缓存区和你指定的提交同步, 但工作目录不受影响
    --hard: 缓存区和工作目录都同步到你指定的提交
 /**************************************************/
-git revert HEAD~2同git reset --hard HEAD~2类似, 区别在于前者通过提交新的commit回到指定版本,后者为指针直接回退
+git revert <commit> 创建一个回退提交, 同git reset --hard <commit>类似, 区别在于前者通过提交新的commit回到指定版本, 后者为指针直接回退
 /**************************************************/
 git merge <branch> merge分支
 /**************************************************/
@@ -38,3 +43,4 @@ git stash pop 取出最近一次缓存并在缓存列表中删除该缓存
 git stash show -p stash@{0} | git apply -R
 git stash show -p | git apply -R
 /**************************************************/
+git log / git log -g / git reflog 查看历史操作记录
