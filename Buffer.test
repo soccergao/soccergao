@@ -18,4 +18,23 @@
   缓冲区中客户端指定的索引。通过调用mark()可以将标记设置为当前位置。调用reset()可以将当前位置设置为所标记的位置：
     public final Buffer mark()
     public final Buffer reset()
+    
+    
+clear()方法将位置设置为0，并将限度设置为容量，从而将缓冲区"清空"。这样一来，就可以完全重新填充缓冲区了：
+    public final Buffer clear()
+不过，clear()方法没有删除缓冲区中的老数据。这些数据仍然存在，还可以使用绝对get方法或者再改变限度和位置进行读取。
+
+rewind()将位置设置为0，但不改变限度：
+    public final Buffer rewind()
+这允许重新读取缓冲区。
+
+flip()方法将限度设置为当前位置，位置设置为0：
+    public fianl Buffer flip()
+希望排空刚刚填充的缓冲区可以使用这个方法。
+
+
+最后，还有两个方法可以返回缓冲区的信息，但不改变这些信息。remaining()方法返回缓冲区中的当前位置与限度之间的元素数。
+如果剩余元素大于0，hasRemaining()方法返回true：
+    public fianl int remaining()
+    public fianl boolean hasRemaining()
   
