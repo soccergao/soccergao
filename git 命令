@@ -1,9 +1,16 @@
+git clone https://github.com/soccergao 克隆
+git remote add origin https://github.com/soccergao 添加一个新的远程 Git 仓库
+git remote -v 显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL
+git remote rename origin origin1 修改一个远程仓库的简写名
+git remote rm origin 移除一个远程仓库
+/**************************************************/
 git branch 查看本地所有分支
 git branch <file> 创建分支
 /**************************************************/
 git commit --amend 改写单次commit
 /**************************************************/
 git push -f <remote> <branch> 强制push，覆盖原有远程仓库
+git push origin master push到origin的master分支
 /**************************************************/
 git checkout <file> 切换分支
 git checkout -b <file> 创建并切换分支
