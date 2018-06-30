@@ -16,8 +16,9 @@ git remote rm origin 移除一个远程仓库
 ## 分支
 #### branch
 git branch 查看本地所有分支
+
 git branch &lt;file&gt; 创建分支
-/**************************************************/
+
 git commit --amend 改写单次commit
 #### push
 git push -f &lt;remote> &lt;branch> 强制push，覆盖原有远程仓库
