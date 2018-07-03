@@ -1,4 +1,4 @@
-# spring data jpa
+# Spring Data Jpa
 ### 查询关键字
 |关键字|示例|同功能JPQL|
 | ------------ | ------------ | ------------ |
@@ -26,4 +26,3 @@
 |True|findByActiveTrue|where x.active = true|
 |False|findByActiveFalse|where x.active = false|
 |IgnoreCase|findByFirstnameIgnoreCase|where Upper(x.firstname) = Upper(?1)|
-
