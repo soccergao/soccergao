@@ -26,3 +26,18 @@
 |True|findByActiveTrue|where x.active = true|
 |False|findByActiveFalse|where x.active = false|
 |IgnoreCase|findByFirstnameIgnoreCase|where Upper(x.firstname) = Upper(?1)|
+
+### 审计
+Class注解: &#64;EntityListeners(AuditingEntityListener.class)
+Field注解: &#64;CreatedBy, &#64;LastModifiedBy, &#64;CreatedDate, &#64;LastModifiedDate
+配置:
+```java
+@Configuration
+@EnableJpaAuditing
+public class JpaAuditingConfig {
+	@Bean
+	public AuditorAware<String> auditorProvider() {
+		return () -> "";	//@CreatedBy和@LastModifiedBy的值
+	}
+}
+```
