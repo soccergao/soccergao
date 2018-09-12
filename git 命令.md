@@ -13,6 +13,8 @@ git remote set-url origin git&#64;github.com:soccergao/soccergao.git  设置远�
 git remote rename origin origin1 修改一个远程仓库的简写名
 
 git remote rm origin 移除一个远程仓库
+
+git push origin --delete <branchName> 删除远程分支
 ## 分支
 #### branch
 git branch 查看本地所有分支
