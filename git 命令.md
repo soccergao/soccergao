@@ -14,7 +14,7 @@ git remote rename origin origin1 修改一个远程仓库的简写名
 
 git remote rm origin 移除一个远程仓库
 
-git push origin --delete <branchName> 删除远程分支
+git push origin --delete &lt;branchName> 删除远程分支
 ## 分支
 #### branch
 git branch 查看本地所有分支
