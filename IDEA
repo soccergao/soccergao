@@ -1,0 +1,13 @@
+Shift + F6: 批量修改文件名变量名
+Ctrl + Shift + N: 通过文件名定位 / 打开文件 / 目录，打开目录需要在输入的内容后面多加一个正斜杠 
+Ctrl + Shift + U: 对选中的代码进行大 / 小写轮流转换
+Ctrl + Alt +　L: 格式化代码，可以对当前文件和整个包目录使用
+Ctrl + Shift + R: 根据输入内容替换对应内容，范围为整个项目 或 指定目录内文件 
+Ctrl + F9: 执行 Make Project 操作(编译)
+Ctrl + H: 显示当前类的层次结构
+Alt + 回车: 导入包,自动修正
+Alt + Shift + C: 对比最近修改的代码
+Alt + F7: 查看方法调用链
+Alt + Insert: get, set等方法
+Ctrl + Shift + (-,+): 折叠或展开全部代码
+Ctrl + Shift + Alt + T: 重构快捷键
