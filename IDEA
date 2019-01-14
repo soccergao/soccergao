@@ -11,6 +11,26 @@ Alt + F7: 查看方法调用链
 Alt + Insert: get, set等方法
 Ctrl + Shift + (-,+): 折叠或展开全部代码
 Ctrl + Shift + Alt + T: 重构快捷键
+【查找】
+Ctrl+F，查找
+Ctrl+R，替换
+F3，查找下一个
+Shift+F3，查找上一个
+Ctrl+Shift+F，在路径中查找
+Ctrl+Shift+R，在路径中替换
+Ctrl+Shift+S，搜索结构
+Ctrl+Shift+M，替换结构
+Alt+F7，查找用法
+Ctrl+Alt+F7，显示用法
+Ctrl+F7，在文件中查找用法
+Ctrl+Shift+F7，在文件中高亮显示用法 
+【重构】
+Ctrl+Alt+Shift+T，弹出重构菜单
+Shift+F6，重命名
+F6，移动
+F5，复制
+Alt+Delete，安全删除
+Ctrl+Alt+N，
 
 自动清理类中无引用的import包：Ctrl + Alt + S 打开设置 -> Editor -> General
 -> Auto Import -> Optimize imports on the fly(for current project) 勾上
