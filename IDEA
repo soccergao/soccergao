@@ -12,4 +12,5 @@ Alt + Insert: get, set等方法
 Ctrl + Shift + (-,+): 折叠或展开全部代码
 Ctrl + Shift + Alt + T: 重构快捷键
 
-自动清理类中无引用的import包：Ctrl + Alt + S 打开设置 -> Editor -> General -> Auto Import -> Optimize imports on the fly(for current project) 勾上
+自动清理类中无引用的import包：Ctrl + Alt + S 打开设置 -> Editor -> General
+-> Auto Import -> Optimize imports on the fly(for current project) 勾上
