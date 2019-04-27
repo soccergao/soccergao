@@ -1,0 +1,11 @@
+bean生命周期:
+Bean的建立， 由BeanFactory读取Bean定义文件，并生成各个实例
+Setter注入，执行Bean的属性依赖注入
+BeanNameAware的setBeanName(), 如果实现该接口，则执行其setBeanName方法
+BeanFactoryAware的setBeanFactory()，如果实现该接口，则执行其setBeanFactory方法
+BeanPostProcessor的processBeforeInitialization()，如果有关联的processor，则在Bean初始化之前都会执行这个实例的processBeforeInitialization()方法
+InitializingBean的afterPropertiesSet()，如果实现了该接口，则执行其afterPropertiesSet()方法
+Bean定义文件中定义init-method
+BeanPostProcessors的processAfterInitialization()，如果有关联的processor，则在Bean初始化之前都会执行这个实例的processAfterInitialization()方法
+DisposableBean的destroy()，在容器关闭时，如果Bean类实现了该接口，则执行它的destroy()方法
+Bean定义文件中定义destroy-method，在容器关闭时，可以在Bean定义文件中使用“destory-method”定义的方法
