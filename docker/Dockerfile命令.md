@@ -1,4 +1,5 @@
 # **Dockerfile常用命令**
+## 官方文档：https://docs.docker.com/engine/reference/builder/
 
 ## **FROM**
 FROM指令是重要的一个并且必须为Dockerﬁle文件开篇的第一个非注释行，用于为镜像文件构建过程指定基础镜 像，后续的指令运行于此基础镜像提供的运行环境
