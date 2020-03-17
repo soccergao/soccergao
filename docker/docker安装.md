@@ -42,6 +42,14 @@ yum list docker-ce.x86_64	--showduplicates | sort -r
 # 安装完成之后可以使用命令查看
 docker version
 ```
+
+### 升级containerd
+``` shell
+# 若上一步安装最新版docker失败原因是container.io版本过低
+# 则需要去 https://download.docker.com/linux/centos/7/x86_64/stable/Packages/ 更新成最新版本, 如下：
+yum install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm -y
+```
+
 ### 启动docker服务
 ``` shell
 systemctl restart docker
