@@ -1,0 +1,14 @@
+- BeanDefinition注册阶段->registerBeanDefinition
+- BeanDefinition合并阶段->getMergedBeanDefinition
+- Bean实例化前阶段->resolveBeforeInstantiation
+- Bean实例化阶段->createBeanInstance
+- Bean实例化后阶段->populateBean
+- Bean属性赋值前阶段->populateBean
+- Bean属性赋值阶段->populateBean
+- Bean Aware 接口回调阶段->initializeBean
+- Bean 初始化前阶段->initializeBean
+- Bean 初始化阶段->initializeBean
+- Bean 初始化后阶段->initializeBean
+- Bean 初始化完成阶段->preInstantiateSingletons
+- Bean 销毁前阶段->destoryBean
+- Bean 销毁阶段->destoryBean
