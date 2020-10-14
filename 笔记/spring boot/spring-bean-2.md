@@ -484,6 +484,117 @@ void preInstantiateSingletons() throws BeansException;
 
 # ApplicationContext
 
+相比于 BeanFactory 而言，`ApplicationContext`由如下几个区别：
+
+- 继承 `MessageSource`，提供国际化的标准访问策略。
+- 继承 `ApplicationEventPublisher` ，提供强大的事件机制。
+- 扩展 `ResourceLoader`，可以用来加载多个 `Resource`，可以灵活访问不同的资源。
+- 对 Web 应用的支持。
+
+下图是 ApplicationContext 结构类图：
+
+![ApplicationContext](C:\project\soccergao\笔记\图片\ApplicationContext.png)
+
+- **BeanFactory**：Spring 管理 Bean 的顶层接口，我们可以认为他是一个简易版的 Spring 容器。`ApplicationContext` 继承 `BeanFactory` 的两个子类：`HierarchicalBeanFactory` 和 `ListableBeanFactory`。`HierarchicalBeanFactory` 是一个具有层级关系的 `BeanFactory`，拥有属性 `parentBeanFactory`。`ListableBeanFactory` 实现了枚举方法可以列举出当前 `BeanFactory` 中所有的 bean 对象而不必根据 name 一个一个的获取。
+- **ApplicationEventPublisher**：用于封装事件发布功能的接口，向事件监听器（Listener）发送事件消息。
+- **ResourceLoader**：Spring 加载资源的顶层接口，用于从一个源加载资源文件。`ApplicationContext` 继承 `ResourceLoader` 的子类 `ResourcePatternResolver`，该接口是将 location 解析为 Resource 对象的策略接口。
+- **MessageSource**：解析 `message` 的策略接口，用不支撑国际化等功能。
+- **EnvironmentCapable**：用于获取 `Environment` 的接口。
+
+##  ConfigurableApplicationContext
+
+```java
+public interface ConfigurableApplicationContext extends ApplicationContext, Lifecycle, Closeable { 
+    String CONFIG_LOCATION_DELIMITERS = ",; \t\n";
+	String CONVERSION_SERVICE_BEAN_NAME = "conversionService";
+	String LOAD_TIME_WEAVER_BEAN_NAME = "loadTimeWeaver";
+	String ENVIRONMENT_BEAN_NAME = "environment";
+	String SYSTEM_PROPERTIES_BEAN_NAME = "systemProperties";
+	String SYSTEM_ENVIRONMENT_BEAN_NAME = "systemEnvironment";
+	String SHUTDOWN_HOOK_THREAD_NAME = "SpringContextShutdownHook";
+
+    // 为 ApplicationContext 设置唯一 ID void setId(String id);
+	void setId(String id);
+
+     // 为 ApplicationContext 设置 parent 父类不应该被修改：如果创建的对象不可用时，则应该在构造函数外部设置它
+	void setParent(@Nullable ApplicationContext parent);
+
+    // 设置 Environment
+	void setEnvironment(ConfigurableEnvironment environment);
+
+    // 获取 Environment
+	@Override
+	ConfigurableEnvironment getEnvironment();
+
+    // 添加 BeanFactoryPostProcessor
+	void addBeanFactoryPostProcessor(BeanFactoryPostProcessor postProcessor);
+
+    // 添加 ApplicationListener
+	void addApplicationListener(ApplicationListener<?> listener);
+
+    // 添加 ProtocolResolver
+	void setClassLoader(ClassLoader classLoader);
+
+    // 添加 ProtocolResolver
+	void addProtocolResolver(ProtocolResolver resolver);
+
+    // 加载或者刷新配置 这是一个非常重要的方法
+	void refresh() throws BeansException, IllegalStateException;
+
+    // 注册 shutdown hook
+	void registerShutdownHook();
+
+    // 关闭 ApplicationContext
+	@Override
+	void close();
+
+    // ApplicationContext 是否处于激活状态
+	boolean isActive();
+
+    // 获取当前上下文的 BeanFactory
+	ConfigurableListableBeanFactory getBeanFactory() throws IllegalStateException;
+}
+```
+
+从上面代码可以看到 `ConfigurableApplicationContext` 接口提供的方法都是对 `ApplicationContext` 进行配置的，例如 `setEnvironment()`、 `addBeanFactoryPostProcessor`，同时它还继承了如下两个接口：
+
+- Lifecycle：对 context 生命周期的管理，它提供 `start()` 和 `stop()` 方法启动和暂停组件。
+- Closeable：标准 JDK 所提供的一个接口，用于最后关闭组件释放资源等。
+
+### ClassPathXmlApplicationContext
+
+![ClassPathXmlApplicationContext](C:\project\soccergao\笔记\图片\ClassPathXmlApplicationContext.png)
+
+`AbstractApplicationContext` 实现了 `ConfigurableApplicationContext` 这个全家桶接口，其子类 `AbstractRefreshableConfigApplicationContext` 又实现了 `BeanNameAware` 和 `InitializingBean` 接口。所以 `ClassPathXmlApplicationContext` 设计的顶级接口有：
+
+```shell
+BeanFactory：Spring 容器 Bean 的管理
+MessageSource：管理 message ，实现国际化等功能
+ApplicationEventPublisher：事件发布
+ResourcePatternResolver：资源加载
+EnvironmentCapable：系统 Environment（profile + Properties） 相关
+Lifecycle：管理生命周期
+Closeable：关闭，释放资源
+InitializingBean：自定义初始化
+BeanNameAware：设置 beanName 的 Aware 接口
+```
+
+### AnnotationConfigApplicationContext
+
+![AnnotationConfigApplicationContext](C:\project\soccergao\笔记\图片\AnnotationConfigApplicationContext.png)
+
+
+
+## WebApplicationContext
+
+```java
+public interface WebApplicationContext extends ApplicationContext {
+    ServletContext getServletContext();
+}
+```
+
+该接口只有一个 `getServletContext()` ，用于给 servlet 提供上下文信息。
+
 # 参考
 
 > 作者：[星如月勿忘初心](https://cloud.tencent.com/developer/user/2960573)
@@ -492,6 +603,13 @@ void preInstantiateSingletons() throws BeansException;
 > 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 > 作者：大军
-> 链接：https://segmentfault.com/a/1190000020898453、https://segmentfault.com/a/1190000020896558
+> 链接：https://segmentfault.com/a/1190000020898453
+> 	       https://segmentfault.com/a/1190000020896558
+> 	       https://segmentfault.com/a/1190000020899952
 > 来源：segmentfault
+> 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+> 作者：用户1655470
+> 链接：https://cloud.tencent.com/developer/article/1399731
+> 来源：腾讯云
 > 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
