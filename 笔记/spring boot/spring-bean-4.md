@@ -1,6 +1,6 @@
 # bean生命周期
 
-## Spring容器的启动
+## 一、Spring容器的启动
 
 ```java
 // AnnotationConfigApplicationContext的构造器
@@ -92,7 +92,7 @@ public void refresh() throws BeansException, IllegalStateException {
 
 其实说白了，我们`spring`容器的启动，主要就是要把那些非懒加载的单例`bean`给实例化，并且管理起来。
 
-## bean实例化
+## 二、bean实例化
 
 ### 1.哪些bean需要在启动的时候实例化？
 
@@ -1956,7 +1956,7 @@ public void registerDisposableBean(String beanName, DisposableBean bean) {
 
 当然其中还有多个埋点方法的调用，这一部分我尽量之后补充一个时序图。
 
-## 四、bean的销毁
+## 三、bean的销毁
 
 刚刚我们有看到，实例化`bean`时，我们会注册一个销毁逻辑到对应的`scope`，而对于单例bean来讲，其实可以说单例的`scope`就是由`spring`提供的，这个时候我们是把需要销毁的`bean`包装成了一个`DisposableBeanAdapter`并注册到了`DefaultSingletonBeanRegistry`的`disposableBeans`容器中。
 
@@ -2064,7 +2064,7 @@ public void destroy() {
 
 这个逻辑就很清晰了，而且调用顺序和初始化方法的调用顺序是一样的。具体`DisposableBeanAdapter`中的这些属性的值是哪来的，感兴趣的同学可以跟一下这个类的构造方法，也是蛮清晰的，这边就不跟了。
 
-## 五、总结
+## 四、总结
 
 到这里为止，可以说我们的`bean`的生命周期就讲完了。
 
