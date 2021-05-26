@@ -25,7 +25,7 @@ public class TestDemo {
 }
 ```
 
-#### 二、ImportSelector方式
+#### 二、ImportSelector
 
 实现ImportSelector接口
 
@@ -40,3 +40,19 @@ public class Myclass implements ImportSelector {
 
 - 返回值： 就是我们实际上要导入到容器中的组件全类名
 - 参数： AnnotationMetadata表示当前被@Import注解给标注的所有注解信息
+
+#### 三、ImportBeanDefinitionRegistrar
+
+实现ImportBeanDefinitionRegistrar接口
+
+```java
+public class Myclass2 implements ImportBeanDefinitionRegistrar {
+    @Override
+    public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
+        
+    }
+}
+```
+
+- 第一个参数：annotationMetadata 和之前的ImportSelector参数一样都是表示当前被@Import注解给标注的所有注解信息
+- 第二个参数表示用于注册定义一个bean
